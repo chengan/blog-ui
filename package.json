@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "npm install --platform=linux --arch=x64 @rollup/rollup-linux-x64-gnu && vue-tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.5",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.10.2",
     "@vitejs/plugin-vue": "^5.2.1",
