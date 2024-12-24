@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI技术博客</title>
     <script>
-      // 如果直接访问 index.html，重定向到首页
+      // 优化重定向逻辑
       if (window.location.pathname.endsWith('index.html')) {
-        window.location.replace(window.location.origin + '/');
+        const url = new URL(window.location.href);
+        const newPath = url.pathname.replace(/index\.html$/, '');
+        window.location.replace(url.origin + newPath);
       }
     </script>
     <style>
