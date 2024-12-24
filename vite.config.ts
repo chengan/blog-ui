@@ -13,7 +13,7 @@ export default defineConfig({
       }
     })
   ],
-  base: './',
+  base: '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -24,7 +24,8 @@ export default defineConfig({
     assetsDir: 'assets',
     cssCodeSplit: true,
     sourcemap: false,
-    minify: 'terser',
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
         manualChunks: {
