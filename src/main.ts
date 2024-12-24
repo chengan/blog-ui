@@ -9,13 +9,21 @@ import './assets/styles/main.css'
 
 const app = createApp(App)
 
-// 注册所有图标
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
-}
-
+// 先初始化基础插件
 app.use(createPinia())
 app.use(router)
 app.use(ElementPlus)
 
+// 延迟注册图标
+setTimeout(() => {
+  try {
+    for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+      app.component(key, component)
+    }
+  } catch (error) {
+    console.error('Failed to register icons:', error)
+  }
+}, 0)
+
+// 挂载应用
 app.mount('#app')
