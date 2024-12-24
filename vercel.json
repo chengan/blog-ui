@@ -1,18 +1,45 @@
 {
   "version": 2,
+  "framework": "vite",
   "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "installCommand": "npm install --platform=linux --arch=x64",
-        "buildCommand": "npm run build"
+        "buildCommand": "npm run build",
+        "outputDirectory": "dist"
       }
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/assets/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "src": "/(.*)\\.js",
+      "headers": {
+        "content-type": "application/javascript; charset=utf-8",
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "src": "/(.*)\\.css",
+      "headers": {
+        "content-type": "text/css; charset=utf-8",
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
       "dest": "/index.html"
     }
   ]
