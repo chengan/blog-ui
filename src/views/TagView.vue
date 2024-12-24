@@ -1,7 +1,7 @@
 <template>
   <div class="tag-view container">
-    <el-row :gutter="20">
-      <el-col :span="6">
+    <div class="tag-layout">
+      <div class="tag-sidebar-wrapper">
         <div class="tag-sidebar">
           <h2>标签列表</h2>
           <div class="tag-list">
@@ -17,8 +17,8 @@
             </el-tag>
           </div>
         </div>
-      </el-col>
-      <el-col :span="18">
+      </div>
+      <div class="tag-content-wrapper">
         <div class="tag-content">
           <h2 class="section-title">
             {{ currentTag ? `${currentTag}相关文章` : '所有文章' }}
@@ -33,8 +33,8 @@
             </div>
           </template>
         </div>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -105,6 +105,22 @@ onUnmounted(() => {
 .tag-view {
   padding: 20px 0;
   min-height: calc(100vh - var(--header-height) - 40px);
+}
+
+.tag-layout {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.tag-sidebar-wrapper {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.tag-content-wrapper {
+  flex: 1;
+  min-width: 0;
 }
 
 .tag-sidebar {
@@ -184,34 +200,34 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .tag-view {
-    padding: 20px;
+    padding: 10px;
   }
 
-  .el-col-6 {
-    width: 100%;
-  }
-  
-  .el-col-18 {
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  .tag-sidebar {
-    position: static;
-  }
-  
-  .tag-list {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .tag-layout {
     gap: 10px;
   }
-  
-  .tag-item {
-    width: auto;
+
+  .tag-sidebar-wrapper {
+    width: 180px;
   }
-  
-  .tag-item:hover {
-    transform: translateY(-2px);
+
+  .tag-sidebar, .tag-content {
+    padding: 15px;
+  }
+
+  .tag-sidebar h2, .section-title {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .tag-item {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .no-articles {
+    padding: 20px;
+    font-size: 0.9rem;
   }
 }
 </style> 

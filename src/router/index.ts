@@ -27,12 +27,20 @@ const router = createRouter({
       meta: {
         title: '标签'
       }
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue'),
+      meta: {
+        title: '页面未找到'
+      }
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} - AI技术博客`
+  document.title = `${to.meta.title || '页面未找到'} - AI技术博客`
   next()
 })
 

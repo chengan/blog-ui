@@ -26,11 +26,19 @@ export default defineConfig({
     sourcemap: false,
     minify: 'esbuild',
     chunkSizeWarningLimit: 2000,
+    reportCompressedSize: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'element-plus': ['element-plus'],
-          'vue': ['vue', 'vue-router', 'pinia']
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('element-plus')) {
+              return 'element-plus'
+            }
+            if (id.includes('vue') || id.includes('pinia')) {
+              return 'vue-vendor'
+            }
+            return 'vendor'
+          }
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name) {
