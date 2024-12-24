@@ -5,27 +5,29 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm install --platform=linux --arch=x64 @rollup/rollup-linux-x64-gnu && vue-tsc && vite build",
+    "build": "npm install --platform=linux --arch=x64 @rollup/rollup-linux-x64-gnu && vue-tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
-    "@vueuse/core": "^10.7.0",
-    "dayjs": "^1.11.10",
-    "element-plus": "^2.4.4",
+    "@vueuse/core": "^12.2.0",
+    "dayjs": "^1.11.13",
+    "element-plus": "^2.9.1",
     "front-matter": "^4.0.2",
-    "markdown-it": "^14.0.0",
-    "pinia": "^2.1.7",
+    "markdown-it": "^14.1.0",
+    "pinia": "^2.3.0",
     "prismjs": "^1.29.0",
-    "vue": "^3.3.11",
-    "vue-router": "^4.2.5"
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@types/markdown-it": "^13.0.7",
-    "@types/node": "^20.10.5",
-    "@vitejs/plugin-vue": "^4.5.2",
-    "typescript": "^5.0.2",
-    "vite": "^5.0.8",
-    "vue-tsc": "^1.4.2"
+    "@rollup/rollup-linux-x64-gnu": "4.9.5",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.10.2",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.5",
+    "vue-tsc": "^2.2.0"
   }
 }
